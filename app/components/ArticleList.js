@@ -8,8 +8,22 @@ export default class ArticleList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            list: [1,2,3,4,5,6,7,8,9,10]
+            list: []
         }
+    }
+
+    componentDidMount() {
+        $.get('/api/posts')
+            .done(data => {
+                let post = JSON.parse(data);
+                this.setState({
+                    list: post
+                })
+            })
+            .fail(() => {
+
+            })
+            .always(() => {});
     }
 
     getArticles() {
@@ -17,11 +31,13 @@ export default class ArticleList extends React.Component {
     }
 
     render() {
-        let list = this.state.list.map((item, index) => {
+        let list = this.state.list.map((post, index) => {
             return (
                 <div className="card card-block">
-                    <h4 className="card-title">文章标题</h4>
-                    <p className="card-text">文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                    <h4 className="card-title">{post.title}</h4>
+                    <p className="card-text">
+                        <div dangerouslySetInnerHTML={{__html: post.html}}/>
+                    </p>
                     <a href="#" className="card-link">Like</a>
                     <a href="#" className="card-link">Favorite</a>
                 </div>

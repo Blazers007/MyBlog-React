@@ -5,6 +5,14 @@
  *
  */
 import express from 'express'
+// DB
+import mongoose from 'mongoose';
+mongoose.connect('mongodb://localhost:27017/test');
+const db = mongoose.connection;
+db.on('error', () => console.log('Database Connect Error') );
+db.on('open', () => console.log('数据库已经连接'));
+
+export {db};
 
 // 初始化中间件
 const app = express();
@@ -21,6 +29,10 @@ app.use((req, res, next) => {
     console.log('Time:', new Date());
     next();
 });
+
+import router from './routes/posts';
+
+app.use(router);
 
 /**
  * 路由 - GET /
