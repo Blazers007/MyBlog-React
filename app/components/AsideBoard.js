@@ -14,11 +14,15 @@ export default class AsideBoard extends React.Component {
 
     render() {
         return(
-            <div styles={[styles.container]}>
+            <aside>
                 <div>123</div>
-                <div>456</div>
-                <div>789</div>
-            </div>
+                <div id="test">456</div>
+                <div id="link-list">
+                    <div id="github"/>
+                    <div id="wechat"/>
+                    <div id="haskell"/>
+                </div>
+            </aside>
         )
     }
 }

@@ -13,14 +13,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="col-lg-4">
-                    <AsideBoard/>
-                </div>
-                <div className="col-lg-8">
+            <div>
+                <AsideBoard/>
+                <article>
                     <Navbar/>
-                    <ArticleList/>
-                </div>
+                    <div className="container">
+                        <ArticleList/>
+                    </div>
+                </article>
             </div>
         )
     }

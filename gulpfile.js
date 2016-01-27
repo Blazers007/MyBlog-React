@@ -7,6 +7,7 @@
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
+    sass        = require('gulp-sass'),
     cssmin      = require('gulp-minify-css'),
     source      = require('vinyl-source-stream'),
     browserify  = require('browserify'),
@@ -86,11 +87,18 @@ gulp.task('app_single_file' , function() {
         .pipe(gulp.dest('public/js'));
 });
 
+gulp.task('app_sass', function() {
+    return gulp.src('./app/stylesheets/*.sass')
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(concat('bundle.css'))
+        .pipe(gulp.dest('public/css'))
+});
+
 /**
  * Gulp 打包 依赖文件与项目文件
  * */
 gulp.task('bower',['bower_js', 'bower_css']);
-gulp.task('app', ['app_single_file', 'app_browserify']);
+gulp.task('app', ['app_single_file', 'app_browserify', 'app_sass']);
 gulp.task('clean', function(){
     // 清理旧文件
 });
@@ -101,6 +109,7 @@ gulp.task('clean', function(){
  * */
 gulp.task('watch', function() {
     gulp.watch('./app/test/*.js', ['app_single_file']);
+    gulp.watch('./app/stylesheets/*.sass', ['app_sass']);
     console.log(chalk.yellow('Watching test javascript int folder "app/test/"'));
 });
 
