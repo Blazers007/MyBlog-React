@@ -68,7 +68,7 @@ gulp.task('app_browserify', function() {
         var start = new Date();
         return bundler
             .bundle()
-            .on('error', function(err) {gutil.log(gutil.colors.red(err.toString()));})
+            .on('error', function(err) {console.log(chalk.red(err.toString()));})
             .on('end', function() {console.log(chalk.blue('---------- Finished rebundling in', (Date.now() - start) + 'ms.'))})
             .pipe(source('bundle.js'))  // 将browserify bundle 转换为gulp流
             .pipe(gulp.dest('public/js'))
