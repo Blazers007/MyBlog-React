@@ -2,6 +2,7 @@
  * Created by Blazers on 2016/1/26.
  */
 import React from 'react';
+import ArticleCard from './ArticleCard';
 
 export default class ArticleList extends React.Component {
 
@@ -33,18 +34,11 @@ export default class ArticleList extends React.Component {
     render() {
         let list = this.state.list.map((post, index) => {
             return (
-                <div className="card card-block">
-                    <h4 className="card-title">{post.title}</h4>
-                    <p className="card-text">
-                        <div dangerouslySetInnerHTML={{__html: post.html}}/>
-                    </p>
-                    <a href="#" className="card-link">Like</a>
-                    <a href="#" className="card-link">Favorite</a>
-                </div>
+                <ArticleCard post={post} key={'article-'+index}/>
             )
         });
         return(
-            <div className="container">
+            <div className="container m-t-3">
                 {list}
             </div>
         )

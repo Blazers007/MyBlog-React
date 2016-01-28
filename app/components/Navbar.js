@@ -8,23 +8,21 @@ export default class Navbar extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        //setTimeout(()=>{
+        //    //alert(1);
+        //    $('nav').removeClass('navbar-inline').addClass('navbar-fixed');
+        //    console.log($('nav'));
+        //    //alert(2);
+        //}, 3000)
+    }
+
     render() {
         return (
-            <nav className="navbar navbar-dark bg-primary">
-                <div className="container">
-                    <a href="" className="navbar-brand">Blog</a>
-                    <ul className="nav navbar-nav">
-                        <li className="nav-item active">
-                            <a href="#" className="nav-link">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">Category</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">Articles</a>
-                        </li>
-                    </ul>
-                </div>
+            <nav className={this.props.fixed ? 'navbar-fixed' : 'navbar-inline'}>
+                <ul>
+                    <li>首页</li>
+                </ul>
             </nav>
         )
     }

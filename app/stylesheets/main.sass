@@ -1,23 +1,48 @@
 html,body
-  height: 100%
-  margin: 0px
-  padding: 0px
+  min-height: 100%
+  margin: 0
+  padding: 0
+  overflow-x: hidden
 
+
+// 声明变量
+$asideWidth: 403px
+
+// 左侧 资讯 分类 功能
 aside
   position: fixed
-  top: 0px
-  left: 0px
-  bottom: 0px
-  width: 383px
+  top: 0
+  left: 0
+  bottom: 0
+  width: $asideWidth
   display: flex
   flex-direction: column
   justify-content: space-between
-  background-image: url("../image/bg.jpg")
-  background-size: 383px 100%
-  background-repeat: no-repeat
+  background-color: #fafafa
+  box-shadow: 1px 0 4px rgba(137, 137, 137, 0.85)
+  //background-image: url("../image/bg.jpg")
+  //background-size: $asideWidth 100%
+  //background-repeat: no-repeat
+  &>div:first-child
+    min-height: 300px
+    position: relative
 
+.aside-noshadow
+  box-shadow: none
+
+#aside-canvas
+  position: absolute
+  width: 100%
+  height: 300px
+
+
+
+// 右侧
 article
-  margin-left: 383px
+  width: 100%
+  margin: 0
+  padding-left: $asideWidth
+  background-color: #f5f5f5
 
   //...
 .flex
@@ -29,41 +54,112 @@ article
     .stretch
       align-items: stretch
 
-.icon
-  width: 32px
-  height: 32px
-  .link
-    cursor: pointer
-    .github
-      background-color: #fff
-      background-image: url("../image/github.png")
+// 中间的Tag List
+#tag-list
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  padding: 0 8px 0 8px
 
+  div
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 32px
+    margin: 4px
+    padding: 2px 16px 2px 16px
+    border-radius: 16px
+    border: solid 1px #147df2
+    background-color: #fff
+    font-weight: bolder
+    color: #147df2
+    cursor: pointer
+    transition: all 0.2s ease
+    &:hover
+      color: white
+      background-color: #147df2
+
+
+// 最下方  的快捷链接区域
 #link-list
   display: flex
   flex-direction: row
   justify-content: space-around
-#github
-  cursor: pointer
-  height: 32px
-  width: 32px
-  background-size: 32px 32px
-  background-image: url("../image/github.png")
-#github:hover
-  background-color: #000
+  padding: 8px 16px 12px 16px
 
-#wechat
-  cursor: pointer
-  height: 32px
+.icon
   width: 32px
-  background-size: 32px 32px
-  background-image: url("../image/github.png")
-
-#haskell
-  cursor: pointer
   height: 32px
-  width: 32px
+.link
+  cursor: pointer
+.github
   background-size: 32px 32px
-  background-image: url("../image/github.png")
+  border-radius: 16px
+  background-image: url("../image/ic_github_black_64.png")
+  &:hover
+    background-color: #000
+    background-image: url("../image/ic_github_white_64.png")
 
-#test
-  background-color: #fff
+
+
+
+// 导航条
+nav
+  padding: 16px 32px 16px 32px
+  li
+    cursor: pointer
+    font-size: 22px
+.navbar-inline
+  background-color: rgba(255,255,255,0)
+  li
+    color: black
+    text-shadow: 0 1px 1px rgba(137, 137, 137, 0.35)
+.navbar-fixed-init
+  position: fixed
+  top: -100
+  left: $asideWidth
+  right: 0
+  background-color: #147df2
+  box-shadow: 3px 1px 4px rgba(137, 137, 137, 0.85)
+  z-index: 1002
+  transition: all 0.5s ease
+  .navbar-fixed-end
+    top: 0
+    transition: all 0.5s ease
+
+  li
+    color: white
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35)
+
+ul,li
+  list-style: none
+
+
+//POST
+.post
+  display: flex
+  flex-direction: column
+  padding-bottom: 16px
+  margin: 24px 0 24px 0
+  border-bottom: solid 1px #CCCCCC
+  .title
+    color: black
+    font-size: 32px
+    font-weight: bolder
+  .content
+    font-size: 18px
+    max-height: 200px
+  .info
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: flex-end
+    .create-time
+      margin: 0
+      color: #707070
+      font-size: 14px
+    .extra
+      display: flex
+      flex-direction: row
+      .reading-times
+        margin: 0 12px 0 0

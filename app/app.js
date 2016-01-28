@@ -3,28 +3,26 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, Link} from 'react-router';
 
 //
-import Navbar from './components/Navbar';
-import AsideBoard from './components/AsideBoard'
-import ArticleList from './components/ArticleList';
+import Home from './components/Home';
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+    }
+
     render() {
         return (
-            <div>
-                <AsideBoard/>
-                <article>
-                    <Navbar/>
-                    <div className="container">
-                        <ArticleList/>
-                    </div>
-                </article>
-            </div>
+            <Router>
+                <Route path="/" component={Home}/>
+            </Router>
         )
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.body);
 

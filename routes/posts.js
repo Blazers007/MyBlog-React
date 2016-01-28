@@ -27,4 +27,6 @@ router.get('/api/posts', (req, res, next) => {
     })
 });
 
+router.get('/')
+
 export default router;

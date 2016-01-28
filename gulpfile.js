@@ -31,10 +31,11 @@ var dependencies = [
 gulp.task('bower_js', function() {
     // 依赖项 这项不需要Watch
     return gulp.src([
-        'bower_components/jquery/dist/jquery.js',           // jQuery
-        'bower_components/bootstrap/dist/js/bootstrap.js',  // Bootstrap
-        'bower_components/toastr/toastr.js'                 // Toastr
-    ])
+            'bower_components/jquery/dist/jquery.js',           // jQuery
+            'bower_components/tether/dist/js/tether.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',  // Bootstrap
+            'bower_components/toastr/toastr.js'                 // Toastr
+        ])
         .pipe(concat('bower_bundle.js'))
         .pipe(uglify())
         .pipe(gulp.dest('public/js'));
@@ -46,6 +47,7 @@ gulp.task('bower_js', function() {
 gulp.task('bower_css', function() {
     // 依赖项CSS
     return gulp.src([
+            'bower_components/tether/dist/css/tether.css',
             'bower_components/bootstrap/dist/css/bootstrap.css',
             'bower_components/toastr/toastr.css'                // 可选Less
         ])

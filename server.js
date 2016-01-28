@@ -38,14 +38,12 @@ app.use(router);
  * 路由 - GET /
  * */
 app.get('/', (req, res, next) => {
-    let articles = [1,2,3,4,5].map((item, index) => {
-        return {
-            title: "文章标题-" + (index+1),
-            content: "文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容"
-        }
-    });
-    res.render('index',{title: 'home', articles: articles});
+    res.render('index', {title: 'home'});
 });
+
+//app.get('/publish', (req, res, next) => {
+//    res.ender('publish', {title: 'Publish'})
+//});
 
 
 /**
