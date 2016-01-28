@@ -14,7 +14,7 @@ export default class ArticleList extends React.Component {
     }
 
     componentDidMount() {
-        $.get('/api/posts')
+        $.get('/api/posts_thumbnail')
             .done(data => {
                 let post = JSON.parse(data);
                 this.setState({

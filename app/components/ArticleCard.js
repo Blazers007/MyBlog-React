@@ -11,10 +11,21 @@ export default class ArticleCard extends React.Component {
 
     render() {
         let post = this.props.post;
+        if (post.thumbnail)
+            alert(post.thumbnail)
+        let thumbnail = this.props.post.thumbnail === null ? null : <img className="thumbnail" src={this.props.post.thumbnail} alt=""/>
         return (
             <div className="post">
-                <h4 className="title">{post.title}</h4>
-                <p className="content">{post.content}</p>
+                <div className="upper">
+                    <h5 className="title">{post.title}</h5>
+                    <ul className="tag-list">
+                        <li><div className="mask"></div><span>Android</span></li>
+                    </ul>
+                </div>
+                <div>
+                    {thumbnail}
+                </div>
+                <p className="content">{post.thumbContent}</p>
                 <div className="info">
                     <p className="create-time">{post.created_at}</p>
                     <div className="extra">

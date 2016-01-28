@@ -6,7 +6,7 @@ html,body
 
 
 // 声明变量
-$asideWidth: 403px
+$asideWidth: 383px
 
 // 左侧 资讯 分类 功能
 aside
@@ -42,7 +42,7 @@ article
   width: 100%
   margin: 0
   padding-left: $asideWidth
-  background-color: #f5f5f5
+  background-color: #f9f9f9
 
   //...
 .flex
@@ -53,6 +53,18 @@ article
     flex-direction: column
     .stretch
       align-items: stretch
+
+#info-board
+  background-color: #147df2
+  padding: 16px 0 0 12px
+  img
+    width: 64px
+    height: 64px
+    border-radius: 32px
+    border: solid 1px white
+  h3
+    color: white
+
 
 // 中间的Tag List
 #tag-list
@@ -71,6 +83,7 @@ article
     border-radius: 16px
     border: solid 1px #147df2
     background-color: #fff
+    font-size: 13px
     font-weight: bolder
     color: #147df2
     cursor: pointer
@@ -105,15 +118,24 @@ article
 
 // 导航条
 nav
-  padding: 16px 32px 16px 32px
-  li
-    cursor: pointer
-    font-size: 22px
+  padding: 16px 16px 16px 32px
+  ul
+    display: flex
+    flex-direction: row
+    padding-bottom: 12px
+    border-bottom: solid 2px #cecece
+    li
+      padding-left: 12px
+      padding-right: 12px
+      cursor: pointer
+      font-size: 14px
+
 .navbar-inline
   background-color: rgba(255,255,255,0)
   li
     color: black
     text-shadow: 0 1px 1px rgba(137, 137, 137, 0.35)
+
 .navbar-fixed-init
   position: fixed
   top: -100
@@ -139,13 +161,50 @@ ul,li
 .post
   display: flex
   flex-direction: column
-  padding-bottom: 16px
+  padding: 8px 12px 12px 12px
   margin: 24px 0 24px 0
-  border-bottom: solid 1px #CCCCCC
-  .title
-    color: black
-    font-size: 32px
-    font-weight: bolder
+  border-bottom: dashed 1px #CCCCCC
+  .upper
+    display: flex
+    flex-direction: row
+    align-items: center
+    margin-bottom: 24px
+    .title
+      color: black
+      font-size: 22px
+      font-weight: bolder
+      margin: 0
+    .tag-list
+      margin: 0 0 0 24px
+      padding: 0
+      li
+        cursor: pointer
+        position: relative
+        border-radius: 2px
+        font-size: 10px
+        color: #aaa
+        background-color: #eee
+        margin: 0 4px 0 4px
+        &:hover
+          color: #147df2
+          background-color: transparent
+          //.mask
+          //  width: 100%
+        span
+          z-index: 10
+          padding: 2px 8px 2px 8px
+        .mask // 覆盖的动画
+          z-index: 1
+          position: absolute;
+          width: 0
+          top: 0
+          left: 0
+          bottom: 0
+          background-color: #147df2
+          transition: all 0.2s ease
+  // 苏略图
+  .thumbnail
+    max-height: 192px
   .content
     font-size: 18px
     max-height: 200px
@@ -162,4 +221,7 @@ ul,li
       display: flex
       flex-direction: row
       .reading-times
+        font-size: 12px
         margin: 0 12px 0 0
+      .share
+        font-size: 12px

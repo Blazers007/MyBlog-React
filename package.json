@@ -24,7 +24,8 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-router": "^2.0.0-rc5",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "xmldom": "^0.1.21"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",

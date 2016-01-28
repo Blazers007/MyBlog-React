@@ -16,22 +16,22 @@ export default class AsideBoard extends React.Component {
         // Canvas动画
 
         // 加载分类列表  ===> taglist
-        let canvas = document.getElementById('aside-canvas');
-        let width = canvas.offsetWidth; // 获取Canvas宽度
-        let height = canvas.offsetHeight;
-        let ctx = canvas.getContext('2d');
-        //ctx.globalCompositeOperation = 'source-atop';
-        ctx.fillStyle = '#147df2';
-        ctx.strokeStyle = '#147df2';
-        ctx.moveTo(0, 0);
-        let inn = 1;
-
-        for (let i = 0 ; i < width ; i+=1) {
-            let y = 16*Math.sin(0.025*(i + inn)) + 100;
-            ctx.lineTo(i, y+0.5);
-        }
-        ctx.lineTo(383, 0);
-        ctx.fill();
+        //let canvas = document.getElementById('aside-canvas');
+        //let width = canvas.offsetWidth; // 获取Canvas宽度
+        //let height = canvas.offsetHeight;
+        //let ctx = canvas.getContext('2d');
+        ////ctx.globalCompositeOperation = 'source-atop';
+        //ctx.fillStyle = '#147df2';
+        //ctx.strokeStyle = '#147df2';
+        //ctx.moveTo(0, 0);
+        //let inn = 1;
+        //
+        //for (let i = 0 ; i < width ; i+=1) {
+        //    let y = 16*Math.sin(0.025*(i + inn)) + 100;
+        //    ctx.lineTo(i, y+0.5);
+        //}
+        //ctx.lineTo(383, 0);
+        //ctx.fill();
 
         //
         //setInterval(()=>{
@@ -45,6 +45,8 @@ export default class AsideBoard extends React.Component {
         //        ctx.lineTo(i, y);
         //    }
         //    ctx.lineTo(383, 0);
+        //
+        //<canvas id="aside-canvas" className="canvas"></canvas>
         //    ctx.fill();
         //}, 16);
     }
@@ -53,7 +55,8 @@ export default class AsideBoard extends React.Component {
         return(
             <aside>
                 <div id="info-board">
-                    <canvas id="aside-canvas" className="canvas"></canvas>
+                    <img src="https://avatars0.githubusercontent.com/u/5445639?v=3&s=460" alt=""/>
+                    <h3>Blazers</h3>
                 </div>
                 <div id="tag-list">
                     <div>Android开发</div>
@@ -64,6 +67,7 @@ export default class AsideBoard extends React.Component {
                     <div>React-Native</div>
                 </div>
                 <div id="link-list">
+                    <div className="icon link github"></div>
                     <div className="icon link github"></div>
                     <div className="icon link github"></div>
                     <div className="icon link github"></div>

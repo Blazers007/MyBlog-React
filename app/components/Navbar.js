@@ -22,6 +22,8 @@ export default class Navbar extends React.Component {
             <nav className={this.props.fixed ? 'navbar-fixed' : 'navbar-inline'}>
                 <ul>
                     <li>首页</li>
+                    <li>留言板</li>
+                    <li>简介</li>
                 </ul>
             </nav>
         )
