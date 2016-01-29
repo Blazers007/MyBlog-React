@@ -22,7 +22,25 @@ const PostSchema = new mongoose.Schema({
 const PostModel = mongoose.model('Post', PostSchema);
 
 router.get('/api/posts_thumbnail', (req, res, next) => {
-    PostModel.find().exec()
+    PostModel.find()
+        .lean()  // Mongoose禁止添加属性 必须调用该方法 http://stackoverflow.com/questions/29963412/add-a-dynamic-property-to-a-mongoose-result-with-each
+        .exec()
+        .then(data => {
+            let thumbs = data.map(item => {
+                item.thumbnail = getFirstSrc(item.html);
+                item.thumbContent = getPureTest(item.html);
+                return item;
+            });
+            res.end(JSON.stringify(thumbs));
+        });
+});
+
+router.get('/api/posts_thumbnail/:tag', (req, res, next) => {
+    let tag = req.params.tag;
+    console.log(tag);
+    PostModel.find()
+        .lean()  // Mongoose禁止添加属性 必须调用该方法 http://stackoverflow.com/questions/29963412/add-a-dynamic-property-to-a-mongoose-result-with-each
+        .exec()
         .then(data => {
             let thumbs = data.map(item => {
                 item.thumbnail = getFirstSrc(item.html);
@@ -35,22 +53,31 @@ router.get('/api/posts_thumbnail', (req, res, next) => {
 
 router.get('/api/posts', (req, res, next) => {
     PostModel.find({}, (err, data) => {
-        //console.log(data);
-        res.end(JSON.stringify(data))
+        res.end(JSON.stringify(data));
     })
 });
 
-router.get('api/posts/:postid', (req, res, next) => {
-
+router.get('/api/posts/:id', (req, res, next) => {
+    console.log(req.params.id);
+    PostModel.findOne({'_id': req.params.id})
+        .lean()
+        .exec()
+        .then(post => {
+            res.end(JSON.stringify(post))
+        }, error => {
+            res.end('error');
+        });
 });
 
 function getPureTest(html) {
+    if (!html)
+        return "";
     try {
         var dd=html.replace(/<\/?.+?>/g,"");
         var dds=dd.replace(/&nbsp;/g,"");//dds为得到后的内容
-        return dds.substring(0 ,100);
+        return dds.substring(0 , dds.length > 300 ? 300 : dds.length) + "...";
     } catch (e) {
-        return 'asdasdas';
+        return html.substring(0, html.length > 300 ? 300 : html.length) + "...";
     }
 }
 
@@ -62,7 +89,6 @@ function getFirstSrc(str) {
         let doc = new DOMParser().parseFromString(str);
         let img = doc.getElementsByTagName('img')[0];
         let src = img.getAttribute('src');
-        console.log(src);
         return src;
     }catch (e){
         return null;

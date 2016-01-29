@@ -3,26 +3,9 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link} from 'react-router';
+import {Router, browserHistory} from 'react-router';
+import routes from './routes';
 
-//
-import Home from './components/Home';
 
-class App extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-    }
-
-    render() {
-        return (
-            <Router>
-                <Route path="/" component={Home}/>
-            </Router>
-        )
-    }
-}
-
-ReactDOM.render(<App/>, document.body);
+ReactDOM.render(<Router history={browserHistory}>{routes}</Router>, document.body);
 

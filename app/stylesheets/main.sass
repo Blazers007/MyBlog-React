@@ -1,12 +1,27 @@
+// 声明变量
+$asideWidth: 383px
+$colorPrimary: #147df2
+/* 引入文件 */
+@import "Article"
+
 html,body
   min-height: 100%
   margin: 0
   padding: 0
   overflow-x: hidden
 
+a
+  text-decoration: none
+  &:hover
+    text-decoration: none
+  &:link
+    text-decoration: none
+  &:active
+    text-decoration: none
+  &:visited
+    text-decoration: none
 
-// 声明变量
-$asideWidth: 383px
+
 
 // 左侧 资讯 分类 功能
 aside
@@ -18,7 +33,7 @@ aside
   display: flex
   flex-direction: column
   justify-content: space-between
-  background-color: #fafafa
+  background-color: #fff
   box-shadow: 1px 0 4px rgba(137, 137, 137, 0.85)
   //background-image: url("../image/bg.jpg")
   //background-size: $asideWidth 100%
@@ -42,7 +57,7 @@ article
   width: 100%
   margin: 0
   padding-left: $asideWidth
-  background-color: #f9f9f9
+  background-color: #fafafa
 
   //...
 .flex
@@ -55,7 +70,7 @@ article
       align-items: stretch
 
 #info-board
-  background-color: #147df2
+  background-color: $colorPrimary
   padding: 16px 0 0 12px
   img
     width: 64px
@@ -73,7 +88,7 @@ article
   flex-wrap: wrap
   padding: 0 8px 0 8px
 
-  div
+  li
     display: flex
     justify-content: center
     align-items: center
@@ -81,7 +96,7 @@ article
     margin: 4px
     padding: 2px 16px 2px 16px
     border-radius: 16px
-    border: solid 1px #147df2
+    border: solid 1px $colorPrimary
     background-color: #fff
     font-size: 13px
     font-weight: bolder
@@ -90,7 +105,11 @@ article
     transition: all 0.2s ease
     &:hover
       color: white
-      background-color: #147df2
+      background-color: $colorPrimary
+    a
+      &.active
+        color: white
+        background-color: #147df2
 
 
 // 最下方  的快捷链接区域
@@ -112,9 +131,6 @@ article
   &:hover
     background-color: #000
     background-image: url("../image/ic_github_white_64.png")
-
-
-
 
 // 导航条
 nav
@@ -141,7 +157,7 @@ nav
   top: -100
   left: $asideWidth
   right: 0
-  background-color: #147df2
+  background-color: $colorPrimary
   box-shadow: 3px 1px 4px rgba(137, 137, 137, 0.85)
   z-index: 1002
   transition: all 0.5s ease
@@ -156,72 +172,3 @@ nav
 ul,li
   list-style: none
 
-
-//POST
-.post
-  display: flex
-  flex-direction: column
-  padding: 8px 12px 12px 12px
-  margin: 24px 0 24px 0
-  border-bottom: dashed 1px #CCCCCC
-  .upper
-    display: flex
-    flex-direction: row
-    align-items: center
-    margin-bottom: 24px
-    .title
-      color: black
-      font-size: 22px
-      font-weight: bolder
-      margin: 0
-    .tag-list
-      margin: 0 0 0 24px
-      padding: 0
-      li
-        cursor: pointer
-        position: relative
-        border-radius: 2px
-        font-size: 10px
-        color: #aaa
-        background-color: #eee
-        margin: 0 4px 0 4px
-        &:hover
-          color: #147df2
-          background-color: transparent
-          //.mask
-          //  width: 100%
-        span
-          z-index: 10
-          padding: 2px 8px 2px 8px
-        .mask // 覆盖的动画
-          z-index: 1
-          position: absolute;
-          width: 0
-          top: 0
-          left: 0
-          bottom: 0
-          background-color: #147df2
-          transition: all 0.2s ease
-  // 苏略图
-  .thumbnail
-    max-height: 192px
-  .content
-    font-size: 18px
-    max-height: 200px
-  .info
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-    align-items: flex-end
-    .create-time
-      margin: 0
-      color: #707070
-      font-size: 14px
-    .extra
-      display: flex
-      flex-direction: row
-      .reading-times
-        font-size: 12px
-        margin: 0 12px 0 0
-      .share
-        font-size: 12px

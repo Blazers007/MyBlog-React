@@ -1,0 +1,109 @@
+/* Article Card */
+.article-card
+  display: flex
+  flex-direction: column
+  padding: 8px 12px 12px 12px
+  margin: 24px 0 24px 0
+  border-bottom: dashed 1px #CCCCCC
+  // 上部分标题 以及 tag标签
+  .upper
+    display: flex
+    flex-direction: row
+    align-items: center
+    margin-bottom: 24px
+    .title
+      margin: 0
+      a
+        color: black
+        font-size: 22px
+        font-weight: bolder
+    .tag-list
+      margin: 0 0 0 24px
+      padding: 0
+      li
+        cursor: pointer
+        position: relative
+        border-radius: 2px
+        font-size: 10px
+        color: #aaa
+        background-color: #eee
+        margin: 0 4px 0 4px
+        &:hover
+          color: #147df2
+          background-color: transparent
+        //.mask
+        //  width: 100%
+        span
+          z-index: 10
+          padding: 2px 8px 2px 8px
+        .mask // 覆盖的动画
+          z-index: 1
+          position: absolute;
+          width: 0
+          top: 0
+          left: 0
+          bottom: 0
+          background-color: #147df2
+          transition: all 0.2s ease
+  // 02 - 缩略图部分
+  .thumbnail
+    max-height: 192px
+  // 03 - 内容梗概
+  .content
+    color: #222
+    font-size: 18px
+    line-height: 30px
+    margin-top: 24px
+  // 04 - 下方额外信息
+  .info
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: flex-end
+    // 04 - 1 时间
+    .create-time
+      margin: 0
+      color: #707070
+      font-size: 14px
+    // 04 - 2 额外
+    .extra
+      display: flex
+      flex-direction: row
+      .reading-times
+        font-size: 12px
+        margin: 0 12px 0 0
+      .share
+        font-size: 12px
+
+/* Article */
+.article
+  h1
+    font-size: 28px
+    margin-bottom: 24px
+  .translate // 重要部分 重新渲染MarkDown渲染过的样式
+    margin: 24px 0 24px 0
+    h1
+      font-size: 112px
+    h2
+      font-size: 56px
+    h3
+      font-size: 45px
+    h4
+      font-size: 34px
+    h5
+      font-size: 24px
+    h6
+      font-size: 20px
+    blockquote
+      background-color: #f0f0f0
+      padding: 8px 0 8px 12px
+      border-left: solid 6px $colorPrimary
+      p
+        margin: 4px 0 8px 0
+        text-shadow: 1px 1px 4px rgba(120,120,120,0.55)
+        font-style: italic
+    ul
+      padding: 0
+      margin: 0
+      li
+        margin: 4px 0 4px 0

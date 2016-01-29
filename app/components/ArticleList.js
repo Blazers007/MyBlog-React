@@ -14,7 +14,13 @@ export default class ArticleList extends React.Component {
     }
 
     componentDidMount() {
-        $.get('/api/posts_thumbnail')
+        // 如果有标志Tag 则按照tag搜索
+        let tag = this.props.params.tag;
+        let query = '';
+        if (tag) {
+            query = '/' + tag;
+        }
+        $.get('/api/posts_thumbnail' + query )
             .done(data => {
                 let post = JSON.parse(data);
                 this.setState({

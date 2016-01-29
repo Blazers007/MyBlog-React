@@ -4,9 +4,20 @@
  * ES6 版本 Express服务器
  *
  */
-import express from 'express'
+import express from 'express';
+// React-Router
+import React from 'react';
+import {renderToString} from 'react-dom/server';
+import {match, RouterContext} from 'react-router';
+import routes from './app/routes';
 // DB
 import mongoose from 'mongoose';
+// 接口
+import router from './routes/posts';
+
+
+
+// 初始化
 mongoose.connect('mongodb://localhost:27017/test');
 const db = mongoose.connection;
 db.on('error', () => console.log('Database Connect Error') );
@@ -30,21 +41,32 @@ app.use((req, res, next) => {
     next();
 });
 
-import router from './routes/posts';
-
+/**
+ * Restful接口中间件
+ * */
 app.use(router);
 
 /**
- * 路由 - GET /
+ * React-Router
  * */
-app.get('/', (req, res, next) => {
-    res.render('index', {title: 'home'});
+app.use((req, res, next) => {
+    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+        if (error) {
+            res.status(500).send(error.message);
+        } else if (redirectLocation) {
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+        } else if (renderProps) {
+            let html = renderToString(<RouterContext {...renderProps}/>);
+            res.status(200).render('index', {title: 'Blog', html: html});
+        } else {
+
+        }
+    })
 });
 
-//app.get('/publish', (req, res, next) => {
-//    res.ender('publish', {title: 'Publish'})
+//app.get('/', (req, res, next) => {
+//    res.status(200).render('index', {title: 'Blog'});
 //});
-
 
 /**
  * 错误处理中间件

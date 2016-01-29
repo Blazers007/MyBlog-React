@@ -2,6 +2,7 @@
  * Created by Blazers on 2016/1/28.
  */
 import React from 'react';
+import {Link} from 'react-router'
 
 export default class ArticleCard extends React.Component {
 
@@ -11,15 +12,13 @@ export default class ArticleCard extends React.Component {
 
     render() {
         let post = this.props.post;
-        if (post.thumbnail)
-            alert(post.thumbnail)
-        let thumbnail = this.props.post.thumbnail === null ? null : <img className="thumbnail" src={this.props.post.thumbnail} alt=""/>
+        let thumbnail = this.props.post.thumbnail === null ? null : <img className="thumbnail" src={this.props.post.thumbnail} alt=""/>;
         return (
-            <div className="post">
+            <div className="article-card">
                 <div className="upper">
-                    <h5 className="title">{post.title}</h5>
+                    <h5 className="title"><Link to={"/post/" + post._id}>{post.title}</Link></h5>
                     <ul className="tag-list">
-                        <li><div className="mask"></div><span>Android</span></li>
+                        <li><span>Android</span></li>
                     </ul>
                 </div>
                 <div>

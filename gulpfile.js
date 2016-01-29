@@ -34,10 +34,11 @@ gulp.task('bower_js', function() {
             'bower_components/jquery/dist/jquery.js',           // jQuery
             'bower_components/tether/dist/js/tether.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',  // Bootstrap
-            'bower_components/toastr/toastr.js'                 // Toastr
+            'bower_components/toastr/toastr.js',                // Toastr
+            'bower_components/highlight/build/highlight.pack.js'
         ])
         .pipe(concat('bower_bundle.js'))
-        .pipe(uglify())
+        .pipe(uglify().on('error', function(err) {console.log(chalk.red(err))}))
         .pipe(gulp.dest('public/js'));
 });
 
@@ -49,7 +50,9 @@ gulp.task('bower_css', function() {
     return gulp.src([
             'bower_components/tether/dist/css/tether.css',
             'bower_components/bootstrap/dist/css/bootstrap.css',
-            'bower_components/toastr/toastr.css'                // 可选Less
+            'bower_components/toastr/toastr.css',
+            'bower_components/animate.css/animate.css',
+            'bower_components/highlight/src/styles/monokai-sublime.css'
         ])
         .pipe(concat('bower_bundle.css'))
         .pipe(cssmin())
@@ -90,7 +93,7 @@ gulp.task('app_single_file' , function() {
 });
 
 gulp.task('app_sass', function() {
-    return gulp.src('./app/stylesheets/*.sass')
+    return gulp.src('./app/stylesheets/main.sass')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('public/css'))

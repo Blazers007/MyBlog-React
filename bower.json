@@ -5,6 +5,8 @@
     "bootstrap": "^4.0.0-alpha.2",
     "magnific-popup": "^1.0.0",
     "toastr": "^2.1.2",
-    "tether": "~1.1.1"
+    "tether": "~1.1.1",
+    "animate.css": "~3.5.1",
+    "highlight": "~9.1.0"
   }
 }

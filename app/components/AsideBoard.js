@@ -2,6 +2,7 @@
  * Created by Blazers on 2016/1/27.
  */
 import React from 'react';
+import {Link} from 'react-router';
 //import Radium from 'radium';
 //import StyleSheet from 'react-style';
 
@@ -58,14 +59,14 @@ export default class AsideBoard extends React.Component {
                     <img src="https://avatars0.githubusercontent.com/u/5445639?v=3&s=460" alt=""/>
                     <h3>Blazers</h3>
                 </div>
-                <div id="tag-list">
-                    <div>Android开发</div>
-                    <div>NodeJS</div>
-                    <div>Gulp</div>
-                    <div>IOS</div>
-                    <div>React</div>
-                    <div>React-Native</div>
-                </div>
+                <ul id="tag-list">
+                    <li><Link to="/posts/Android" activeClassName="active">Android</Link></li>
+                    <li>NodeJS</li>
+                    <li>Gulp</li>
+                    <li>IOS</li>
+                    <li>React</li>
+                    <li>React-Native</li>
+                </ul>
                 <div id="link-list">
                     <div className="icon link github"></div>
                     <div className="icon link github"></div>

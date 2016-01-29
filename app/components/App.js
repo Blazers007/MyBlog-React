@@ -5,9 +5,8 @@ import React from 'react';
 
 import Navbar from './Navbar';
 import AsideBoard from './AsideBoard'
-import ArticleList from './ArticleList';
 
-export default class Home extends React.Component {
+export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,7 +34,7 @@ export default class Home extends React.Component {
                 <article>
                     <Navbar fixed={this.state.navbarFixed}/>
                     <div className="container">
-                        <ArticleList fixed={this.state.navbarFixed}/>
+                        {this.props.children}
                     </div>
                 </article>
             </div>
