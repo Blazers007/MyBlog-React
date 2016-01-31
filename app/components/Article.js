@@ -13,7 +13,7 @@ export default class Article extends React.Component {
 
     componentDidMount() {
         let postId = this.props.params.id || '56a86d2b2a1c1ef419d58550';
-        $.get('/api/posts/' + postId)
+        $.get('/api/post/' + postId)
             .done(post => {
                 this.setState({
                     post: JSON.parse(post)
@@ -31,15 +31,17 @@ export default class Article extends React.Component {
         let post = this.state.post;
         if (post) {
             return (
-                <div className="article">
-                    <h1>{post.title}</h1>
-                    <div className="translate" dangerouslySetInnerHTML={{__html: post.html}}></div>
-                    <code>
-                        private static final int id = 0;
-                        function(){
+                <div className="container m-t-3">
+                    <div className="article">
+                        <h1>{post.title}</h1>
+                        <div className="translate" dangerouslySetInnerHTML={{__html: post.html}}></div>
+                        <code>
+                            private static final int id = 0;
+                            function(){
 
-                    }
-                    </code>
+                        }
+                        </code>
+                    </div>
                 </div>
             )
         }

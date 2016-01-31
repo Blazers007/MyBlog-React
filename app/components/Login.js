@@ -9,6 +9,12 @@ export default class Login extends React.Component {
     }
 
     render() {
-
+        return (
+            <div className="container">
+                <div className="card">
+                    <input type="text" className="input-group-lg"/>
+                </div>
+            </div>
+        )
     }
 }

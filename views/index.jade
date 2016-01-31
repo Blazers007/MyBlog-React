@@ -1,3 +1,14 @@
-include ./partial/head
-    body #{html}
-        script(src="./js/bundle.js")
+doctype html
+html
+    head
+        // Bootstrap Meta tags
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(http-equiv="x-ua-compatible" content='ie=edge')
+        // Bower Requirements
+        link(rel="stylesheet" href="/css/bower_bundle.css")
+        link(rel="stylesheet" href="/css/bundle.css")
+        script(src="/js/bower_bundle.js")
+        title= title
+    body
+        script(src="/js/bundle.js")

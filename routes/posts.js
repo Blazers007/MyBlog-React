@@ -37,7 +37,7 @@ router.get('/api/posts_thumbnail', (req, res, next) => {
 
 router.get('/api/posts_thumbnail/:tag', (req, res, next) => {
     let tag = req.params.tag;
-    console.log(tag);
+    console.log('------------------',tag);
     PostModel.find()
         .lean()  // Mongoose禁止添加属性 必须调用该方法 http://stackoverflow.com/questions/29963412/add-a-dynamic-property-to-a-mongoose-result-with-each
         .exec()
@@ -57,7 +57,19 @@ router.get('/api/posts', (req, res, next) => {
     })
 });
 
-router.get('/api/posts/:id', (req, res, next) => {
+router.get('/api/posts/:tag', (req, res, next) => {
+    let tag = req.params.tag;
+    console.log('------------------',tag);
+    PostModel.find()
+        .lean()  // Mongoose禁止添加属性 必须调用该方法 http://stackoverflow.com/questions/29963412/add-a-dynamic-property-to-a-mongoose-result-with-each
+        .exec()
+        .then(data => {
+            res.end(JSON.stringify(data));
+        });
+});
+
+
+router.get('/api/post/:id', (req, res, next) => {
     console.log(req.params.id);
     PostModel.findOne({'_id': req.params.id})
         .lean()

@@ -5,11 +5,12 @@
  *
  */
 import express from 'express';
-// React-Router
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
-import routes from './app/routes';
+import path from 'path';
+//// React-Router
+//import React from 'react';
+//import {renderToString} from 'react-dom/server';
+//import {match, RouterContext} from 'react-router';
+//import routes from './app/routes';
 // DB
 import mongoose from 'mongoose';
 // 接口
@@ -29,7 +30,8 @@ export {db};
 const app = express();
 app.set('views', './views');            // 设置模板文件目录 以及模板引擎
 app.set('view engine', 'jade');
-app.use(express.static('public'));      // 映射静态资源目录 先去public目录下查找
+
+app.use(express.static(__dirname + '/public'));      // 映射静态资源目录 先去public目录下查找
 
 
 
@@ -37,6 +39,7 @@ app.use(express.static('public'));      // 映射静态资源目录 先去public
  * 自定义中间件
  * */
 app.use((req, res, next) => {
+    console.log(req.url);
     console.log('Time:', new Date());
     next();
 });
@@ -49,24 +52,22 @@ app.use(router);
 /**
  * React-Router
  * */
-app.use((req, res, next) => {
-    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-        if (error) {
-            res.status(500).send(error.message);
-        } else if (redirectLocation) {
-            res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-        } else if (renderProps) {
-            let html = renderToString(<RouterContext {...renderProps}/>);
-            res.status(200).render('index', {title: 'Blog', html: html});
-        } else {
-
-        }
-    })
+app.get('*', (req, res, next) => {
+    res.status(200).render('index', {title: 'Blog'});
+    //console.log(req.url);
+    //match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+    //    if (error) {
+    //        res.status(500).send(error.message);
+    //    } else if (redirectLocation) {
+    //        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    //    } else if (renderProps) {
+    //        let html = renderToString(<RouterContext {...renderProps}/>);
+    //        res.status(200).render('index', {title: 'Blog', html: html});
+    //    } else {
+    //        next();
+    //    }
+    //})
 });
-
-//app.get('/', (req, res, next) => {
-//    res.status(200).render('index', {title: 'Blog'});
-//});
 
 /**
  * 错误处理中间件
