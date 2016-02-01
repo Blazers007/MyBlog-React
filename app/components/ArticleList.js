@@ -2,6 +2,7 @@
  * Created by Blazers on 2016/1/26.
  */
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import ArticleCard from './ArticleCard';
 
 export default class ArticleList extends React.Component {
@@ -25,7 +26,18 @@ export default class ArticleList extends React.Component {
                 let post = JSON.parse(data);
                 this.setState({
                     list: post
-                })
+                });
+                //let step = setInterval(()=>{
+                //    if (post.length) {
+                //        let tmp = this.state.list;
+                //        tmp.push(post.pop());
+                //        this.setState({
+                //            list: tmp
+                //        })
+                //    } else {
+                //        clearInterval(step);
+                //    }
+                //}, 150);
             })
             .fail(() => {
 
