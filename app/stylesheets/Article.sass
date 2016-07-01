@@ -36,15 +36,17 @@
         span
           z-index: 10
           padding: 2px 8px 2px 8px
-        .mask // 覆盖的动画
+        // 覆盖的动画
+        .mask
           z-index: 1
-          position: absolute;
+          position: absolute
           width: 0
           top: 0
           left: 0
           bottom: 0
           background-color: #147df2
           transition: all 0.2s ease
+
   // 02 - 缩略图部分
   .thumbnail
     max-height: 192px
@@ -76,11 +78,12 @@
         font-size: 12px
 
 /* Article */
+// 重要部分 重新渲染MarkDown渲染过的样式
 .article
   h1
     font-size: 28px
     margin-bottom: 24px
-  .translate // 重要部分 重新渲染MarkDown渲染过的样式
+  .translate
     margin: 24px 0 24px 0
     h1
       font-size: 112px

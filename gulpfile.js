@@ -7,7 +7,7 @@
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
-    sass        = require('gulp-sass'),
+    sass        = require('gulp-ruby-sass'),
     cssmin      = require('gulp-minify-css'),
     source      = require('vinyl-source-stream'),
     browserify  = require('browserify'),
@@ -96,8 +96,8 @@ gulp.task('app_single_file' , function() {
 });
 
 gulp.task('app_sass', function() {
-    return gulp.src('./app/stylesheets/main.sass')
-        .pipe(sass.sync().on('error', sass.logError))
+    return sass('./app/stylesheets/main.sass')
+        .on('error', sass.logError)
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('public/css'))
 });
