@@ -5,7 +5,7 @@
   padding: 8px 12px 12px 12px
   margin: 24px 0 24px 0
   border-bottom: dashed 1px #CCCCCC
-  // 上部分标题 以及 tag标签
+  // tag
   .upper
     display: flex
     flex-direction: row
@@ -36,7 +36,7 @@
         span
           z-index: 10
           padding: 2px 8px 2px 8px
-        // 覆盖的动画
+        // animation
         .mask
           z-index: 1
           position: absolute
@@ -47,27 +47,27 @@
           background-color: #147df2
           transition: all 0.2s ease
 
-  // 02 - 缩略图部分
+  // 02 - thumb
   .thumbnail
     max-height: 192px
-  // 03 - 内容梗概
+  // 03 - content overview
   .content
     color: #222
     font-size: 18px
     line-height: 30px
     margin-top: 24px
-  // 04 - 下方额外信息
+  // 04 - bottom extra info
   .info
     display: flex
     flex-direction: row
     justify-content: space-between
     align-items: flex-end
-    // 04 - 1 时间
+    // 04 - 1 time
     .create-time
       margin: 0
       color: #707070
       font-size: 14px
-    // 04 - 2 额外
+    // 04 - 2 extra
     .extra
       display: flex
       flex-direction: row
@@ -78,7 +78,7 @@
         font-size: 12px
 
 /* Article */
-// 重要部分 重新渲染MarkDown渲染过的样式
+// !IMPORTANT! override the markdown origin stylesheet
 .article
   h1
     font-size: 28px
@@ -112,7 +112,7 @@
         margin: 4px 0 4px 0
 
 
-/* Article 动画效果 */
+/* Article - Animation */
 .animate-article-list-enter
   opacity: 0.2
   transform: translate(0, 30px)
